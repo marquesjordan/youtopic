@@ -1,0 +1,21 @@
+<h1>Create a Survey</h1>
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@survey, :url => {:action => :create, :controller => :survey} ) do |f| %> 
+	<div class="field">
+		<%= collection_select(:survey, :topic_id, Topic.all, :id, :name, prompt: true, :required => true) %>*
+	</div>
+	<div class="field">
+		<%= f.label :content %><br>
+		<%= f.text_area :content %><br>
+	</div>
+	<%= f.fields_for :choices do |builder| %>
+		<%= builder.label :description %>
+        <%= builder.text_field :description %><br><br>
+	<% end %>
+
+	<div class="action">
+		<%= f.submit %>
+	<div>
+
+<% end %>

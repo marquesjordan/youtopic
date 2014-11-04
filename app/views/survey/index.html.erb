@@ -1,0 +1,9 @@
+<h1>List of Surveys</h1>
+
+<% @surveys.each do |survey| %>
+<div>
+	<p><%= survey.content %></p>
+</div>
+<% end %>
+
+<%= link_to "Add Question", new_survey_path %>
